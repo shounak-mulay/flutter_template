@@ -50,7 +50,7 @@ class ConsolidatedWeather {
 
   Image weatherConditionImage() {
     Image image;
-    switch (this.weatherCondition) {
+    switch (weatherCondition) {
       case WeatherCondition.clear:
       case WeatherCondition.lightCloud:
         image = Image.asset('assets/clear.png');

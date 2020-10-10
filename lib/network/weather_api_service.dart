@@ -1,5 +1,4 @@
 import 'package:flutter_template/model/city.dart';
-import 'package:flutter_template/model/consolidated_weather.dart';
 import 'package:flutter_template/model/weather.dart';
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';

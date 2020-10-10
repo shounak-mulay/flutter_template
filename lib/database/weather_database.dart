@@ -1,11 +1,12 @@
 
+import 'dart:io';
+
 import 'package:flutter_template/database/dao/city_dao.dart';
 import 'package:flutter_template/database/tables/cities.dart';
+import 'package:moor/ffi.dart';
 import 'package:moor/moor.dart';
-import 'package:moor_ffi/moor_ffi.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
-import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 part 'weather_database.g.dart';
 

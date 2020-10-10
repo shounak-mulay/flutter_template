@@ -11,7 +11,7 @@ class CitiesRoute extends StatefulWidget {
 }
 
 class _CitiesRouteState extends State<CitiesRoute> {
-  var _searchText;
+  String _searchText;
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +21,19 @@ class _CitiesRouteState extends State<CitiesRoute> {
       ),
       body: Form(
         child: Column(
-          children: <Widget>[
+          children: [
             Row(
-              children: <Widget>[
+              children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 10.0),
+                    padding: const EdgeInsets.only(left: 10.0),
                     child: TextFormField(
                       onFieldSubmitted: (value) {
                         setState(() {
                           _searchText = value;
                         });
                       },
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'City',
                         hintText: 'Chicago',
                       ),
@@ -50,21 +50,21 @@ class _CitiesRouteState extends State<CitiesRoute> {
                 ]),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator()
                     );
                   }
                   if (snapshot.hasData) {
                     final citiesFromAPI = snapshot.data[0];
                     final selectedCities = snapshot.data[1];
-                    if (citiesFromAPI.length > 0) {
-                      return Cities(citiesFromAPI, selectedCities, (selectedCity) {
+                    if (citiesFromAPI.isNotEmpty) {
+                      return Cities(citiesFromAPI, selectedCities, (City selectedCity) {
                         sl<WeatherDatabase>().cityDao.insertCity(selectedCity);
                         Navigator.pop(context);
                       });
                     }
                   }
-                  return Center(child: Text('Search for a city'));
+                  return const Center(child: Text('Search for a city'));
                 },
               ),
             )
@@ -77,9 +77,9 @@ class _CitiesRouteState extends State<CitiesRoute> {
 class Cities extends StatelessWidget {
   final List<City> cities;
   final List<City> selectedCities;
-  final onCitySelected;
+  final Function onCitySelected;
 
-  Cities(this.cities, this.selectedCities, this.onCitySelected);
+  const Cities(this.cities, this.selectedCities, this.onCitySelected);
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +90,12 @@ class Cities extends StatelessWidget {
         final city = cities[index];
         return ListTile(
             title: Text(city.title),
-            trailing: selectedCities.any((element) => city.title == element.title) ? Icon(Icons.check) : null,
-            onTap: () => this.onCitySelected(cities[index])
+            trailing: selectedCities.any((element) => city.title == element.title) ? const Icon(Icons.check) : null,
+            onTap: () => onCitySelected(cities[index])
         );
       },
       separatorBuilder: (BuildContext context, int index) {
-        return Divider(color: Colors.grey);
+        return const Divider(color: Colors.grey);
       },
     );
   }

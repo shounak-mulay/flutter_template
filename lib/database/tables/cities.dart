@@ -11,16 +11,16 @@ class Cities extends Table {
 
 extension CityDataModelToDomainModel on CityDataModel {
   City convertToDomainModel() {
-    return City(this.woeid, this.title, this.locationType);
+    return City(woeid, title, locationType);
   }
 }
 
 extension CityToDataModel on City {
   CityDataModel convertToDataModel() {
     return CityDataModel(
-      title: this.title,
-      woeid: this.woeid,
-      locationType: this.locationType
+      title: title,
+      woeid: woeid,
+      locationType: locationType
     );
   }
 }

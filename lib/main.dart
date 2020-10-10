@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/di/service_locator.dart';
-import 'package:flutter_template/routes/weather_route.dart';
+import 'package:flutter_template/routes/route_generator.dart';
 
 void main() {
   setup();
@@ -10,8 +10,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: WeatherRoute(),
+    return const MaterialApp(
+      initialRoute: Routes.weather,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

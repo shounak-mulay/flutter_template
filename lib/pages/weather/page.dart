@@ -7,14 +7,14 @@ import 'package:flutter_template/di/service_locator.dart';
 import 'package:flutter_template/model/city.dart';
 import 'package:flutter_template/model/weather.dart';
 import 'package:flutter_template/network/weather_api_service.dart';
-import 'package:flutter_template/routes/route_generator.dart';
+import 'package:flutter_template/routes/routes.dart';
 
-class WeatherRoute extends StatefulWidget {
+class WeatherPage extends StatefulWidget {
   @override
-  _WeatherRouteState createState() => _WeatherRouteState();
+  _WeatherPageState createState() => _WeatherPageState();
 }
 
-class _WeatherRouteState extends State<WeatherRoute> {
+class _WeatherPageState extends State<WeatherPage> {
 
   List<City> cities;
   StreamSubscription<List<City>> cityDatabaseSubscription;

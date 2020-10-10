@@ -5,12 +5,12 @@ import 'package:flutter_template/di/service_locator.dart';
 import 'package:flutter_template/model/city.dart';
 import 'package:flutter_template/network/weather_api_service.dart';
 
-class CitiesRoute extends StatefulWidget {
+class CitiesPage extends StatefulWidget {
   @override
-  _CitiesRouteState createState() => _CitiesRouteState();
+  _CitiesPageState createState() => _CitiesPageState();
 }
 
-class _CitiesRouteState extends State<CitiesRoute> {
+class _CitiesPageState extends State<CitiesPage> {
   String _searchText;
 
   @override

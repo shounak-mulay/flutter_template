@@ -8,7 +8,7 @@ part 'consolidated_weather.freezed.dart';
 
 @freezed
 abstract class ConsolidatedWeather implements _$ConsolidatedWeather {
-  ConsolidatedWeather._();
+  const ConsolidatedWeather._();
   const factory ConsolidatedWeather(
     int id,
     @JsonKey(name: 'weather_state_name') String weatherStateName,

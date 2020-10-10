@@ -1,4 +1,4 @@
-include: package:lint/analysis_options.yaml
+# include: package:lint/analysis_options.yaml
 
 analyzer:
   errors:
@@ -7,4 +7,5 @@ analyzer:
     parameter_assignments: error
 
   exclude:
-    - lib/**/*.g.dart
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"

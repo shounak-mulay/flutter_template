@@ -1,17 +1,16 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+part 'city.freezed.dart';
 part 'city.g.dart';
 
-@JsonSerializable()
-class City {
-  int woeid;
-  String title;
-
-  @JsonKey(name: 'location_type')
-  final String locationType;
-
-  City(this.woeid, this.title, this.locationType);
+@freezed
+abstract class City with _$City {
+  const factory City(
+    int woeid,
+    String title,
+    @JsonKey(name: 'location_type')
+    String locationType) = _City;
 
   factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
-  Map<String, dynamic> toJson() => _$CityToJson(this);
 }

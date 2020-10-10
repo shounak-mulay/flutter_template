@@ -6,8 +6,9 @@ part of 'consolidated_weather.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ConsolidatedWeather _$ConsolidatedWeatherFromJson(Map<String, dynamic> json) {
-  return ConsolidatedWeather(
+_$_ConsolidatedWeather _$_$_ConsolidatedWeatherFromJson(
+    Map<String, dynamic> json) {
+  return _$_ConsolidatedWeather(
     json['id'] as int,
     json['weather_state_name'] as String,
     json['weather_state_abbr'] as String,
@@ -16,15 +17,16 @@ ConsolidatedWeather _$ConsolidatedWeatherFromJson(Map<String, dynamic> json) {
     json['max_temp'] as num,
     json['the_temp'] as num,
     json['wind_speed'] as num,
+    json['wind_direction'] as num,
     json['air_pressure'] as num,
     json['humidity'] as num,
     json['visibility'] as num,
     json['predictability'] as num,
-  )..windDirection = json['wind_direction'] as num;
+  );
 }
 
-Map<String, dynamic> _$ConsolidatedWeatherToJson(
-        ConsolidatedWeather instance) =>
+Map<String, dynamic> _$_$_ConsolidatedWeatherToJson(
+        _$_ConsolidatedWeather instance) =>
     <String, dynamic>{
       'id': instance.id,
       'weather_state_name': instance.weatherStateName,

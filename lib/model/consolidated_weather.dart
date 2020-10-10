@@ -1,52 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_template/model/weather_condition.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'consolidated_weather.g.dart';
+part 'consolidated_weather.freezed.dart';
 
-@JsonSerializable()
-class ConsolidatedWeather {
+@freezed
+abstract class ConsolidatedWeather implements _$ConsolidatedWeather {
+  ConsolidatedWeather._();
+  const factory ConsolidatedWeather(
+    int id,
+    @JsonKey(name: 'weather_state_name') String weatherStateName,
+    @JsonKey(name: 'weather_state_abbr') String weatherStateAbbr,
+    @JsonKey(name: 'wind_direction_compass') String windDirectionCompass,
+    @JsonKey(name: 'min_temp') num minTemp,
+    @JsonKey(name: 'max_temp') num maxTemp,
+    @JsonKey(name: 'the_temp') num theTemp,
+    @JsonKey(name: 'wind_speed') num windSpeed,
+    @JsonKey(name: 'wind_direction') num windDirection,
+    @JsonKey(name: 'air_pressure') num airPressure,
+    num humidity,
+    num visibility,
+    num predictability,
+  ) = _ConsolidatedWeather;
 
-  int id;
-
-  @JsonKey(name: 'weather_state_name')
-  String weatherStateName;
-  @JsonKey(name: 'weather_state_abbr')
-  String weatherStateAbbr;
-  @JsonKey(name: 'wind_direction_compass')
-  String windDirectionCompass;
-  @JsonKey(name: 'min_temp')
-  num minTemp;
-  @JsonKey(name: 'max_temp')
-  num maxTemp;
-  @JsonKey(name: 'the_temp')
-  num theTemp;
-  @JsonKey(name: 'wind_speed')
-  num windSpeed;
-  @JsonKey(name: 'wind_direction')
-  num windDirection;
-  @JsonKey(name: 'air_pressure')
-  num airPressure;
-  num humidity;
-  num visibility;
-  num predictability;
-
-  ConsolidatedWeather(
-      this.id,
-      this.weatherStateName,
-      this.weatherStateAbbr,
-      this.windDirectionCompass,
-      this.minTemp,
-      this.maxTemp,
-      this.theTemp,
-      this.windSpeed,
-      this.airPressure,
-      this.humidity,
-      this.visibility,
-      this.predictability);
-
-  factory ConsolidatedWeather.fromJson(Map<String, dynamic> json) => _$ConsolidatedWeatherFromJson(json);
-  Map<String, dynamic> toJson() => _$ConsolidatedWeatherToJson(this);
+  factory ConsolidatedWeather.fromJson(Map<String, dynamic> json) =>
+      _$ConsolidatedWeatherFromJson(json);
 
   Image weatherConditionImage() {
     Image image;

@@ -9,7 +9,7 @@ part of 'weather_api_service.dart';
 class _WeatherAPIService implements WeatherAPIService {
   _WeatherAPIService(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    this.baseUrl ??= 'https://www.metaweather.com/api/location/';
+    baseUrl ??= 'https://www.metaweather.com/api/location/';
   }
 
   final Dio _dio;
@@ -17,12 +17,12 @@ class _WeatherAPIService implements WeatherAPIService {
   String baseUrl;
 
   @override
-  searchCities(city) async {
+  Future<List<City>> searchCities(city) async {
     ArgumentError.checkNotNull(city, 'city');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'query': city};
     final _data = <String, dynamic>{};
-    final Response<List<dynamic>> _result = await _dio.request('/search',
+    final _result = await _dio.request<List<dynamic>>('/search',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -37,12 +37,12 @@ class _WeatherAPIService implements WeatherAPIService {
   }
 
   @override
-  weatherForCity(id) async {
+  Future<Weather> weatherForCity(id) async {
     ArgumentError.checkNotNull(id, 'id');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final Response<Map<String, dynamic>> _result = await _dio.request('/$id',
+    final _result = await _dio.request<Map<String, dynamic>>('/$id',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',

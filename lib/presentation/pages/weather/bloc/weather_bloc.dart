@@ -17,7 +17,7 @@ part 'weather_bloc.freezed.dart';
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final IWeatherRepository weatherRepository;
 
-  WeatherBloc(this.weatherRepository) : super(Initial());
+  WeatherBloc(this.weatherRepository) : super(WeatherState.inital());
 
   StreamSubscription<Either<WeatherFailure, KtList<Weather>>>
       _weatherStreamSubscription;

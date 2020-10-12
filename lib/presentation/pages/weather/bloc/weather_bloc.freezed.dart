@@ -299,25 +299,25 @@ class _$WeatherStateTearOff {
   const _$WeatherStateTearOff();
 
 // ignore: unused_element
-  Initial inital() {
-    return const Initial();
+  _Initial inital() {
+    return const _Initial();
   }
 
 // ignore: unused_element
-  Loading loading() {
-    return const Loading();
+  _Loading loading() {
+    return const _Loading();
   }
 
 // ignore: unused_element
-  Loaded loaded(KtList<Weather> weatherList) {
-    return Loaded(
+  _Loaded loaded(KtList<Weather> weatherList) {
+    return _Loaded(
       weatherList,
     );
   }
 
 // ignore: unused_element
-  Failure failure(WeatherFailure failure) {
-    return Failure(
+  _Failure failure(WeatherFailure failure) {
+    return _Failure(
       failure,
     );
   }
@@ -346,17 +346,17 @@ mixin _$WeatherState {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
-    @required Result loading(Loading value),
-    @required Result loaded(Loaded value),
-    @required Result failure(Failure value),
+    @required Result inital(_Initial value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
+    @required Result failure(_Failure value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
-    Result loading(Loading value),
-    Result loaded(Loaded value),
-    Result failure(Failure value),
+    Result inital(_Initial value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
+    Result failure(_Failure value),
     @required Result orElse(),
   });
 }
@@ -378,24 +378,24 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+abstract class _$InitialCopyWith<$Res> {
+  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
+      __$InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class __$InitialCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
+    implements _$InitialCopyWith<$Res> {
+  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
+      : super(_value, (v) => _then(v as _Initial));
 
   @override
-  Initial get _value => super._value as Initial;
+  _Initial get _value => super._value as _Initial;
 }
 
 /// @nodoc
-class _$Initial implements Initial {
-  const _$Initial();
+class _$_Initial implements _Initial {
+  const _$_Initial();
 
   @override
   String toString() {
@@ -404,7 +404,7 @@ class _$Initial implements Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Initial);
+    return identical(this, other) || (other is _Initial);
   }
 
   @override
@@ -444,10 +444,10 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
-    @required Result loading(Loading value),
-    @required Result loaded(Loaded value),
-    @required Result failure(Failure value),
+    @required Result inital(_Initial value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
+    @required Result failure(_Failure value),
   }) {
     assert(inital != null);
     assert(loading != null);
@@ -459,10 +459,10 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
-    Result loading(Loading value),
-    Result loaded(Loaded value),
-    Result failure(Failure value),
+    Result inital(_Initial value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
+    Result failure(_Failure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -473,29 +473,29 @@ class _$Initial implements Initial {
   }
 }
 
-abstract class Initial implements WeatherState {
-  const factory Initial() = _$Initial;
+abstract class _Initial implements WeatherState {
+  const factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<$Res> {
-  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
-      _$LoadingCopyWithImpl<$Res>;
+abstract class _$LoadingCopyWith<$Res> {
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
-    implements $LoadingCopyWith<$Res> {
-  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
-      : super(_value, (v) => _then(v as Loading));
+class __$LoadingCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
 
   @override
-  Loading get _value => super._value as Loading;
+  _Loading get _value => super._value as _Loading;
 }
 
 /// @nodoc
-class _$Loading implements Loading {
-  const _$Loading();
+class _$_Loading implements _Loading {
+  const _$_Loading();
 
   @override
   String toString() {
@@ -504,7 +504,7 @@ class _$Loading implements Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Loading);
+    return identical(this, other) || (other is _Loading);
   }
 
   @override
@@ -544,10 +544,10 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
-    @required Result loading(Loading value),
-    @required Result loaded(Loaded value),
-    @required Result failure(Failure value),
+    @required Result inital(_Initial value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
+    @required Result failure(_Failure value),
   }) {
     assert(inital != null);
     assert(loading != null);
@@ -559,10 +559,10 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
-    Result loading(Loading value),
-    Result loaded(Loaded value),
-    Result failure(Failure value),
+    Result inital(_Initial value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
+    Result failure(_Failure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -573,31 +573,31 @@ class _$Loading implements Loading {
   }
 }
 
-abstract class Loading implements WeatherState {
-  const factory Loading() = _$Loading;
+abstract class _Loading implements WeatherState {
+  const factory _Loading() = _$_Loading;
 }
 
 /// @nodoc
-abstract class $LoadedCopyWith<$Res> {
-  factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) then) =
-      _$LoadedCopyWithImpl<$Res>;
+abstract class _$LoadedCopyWith<$Res> {
+  factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
+      __$LoadedCopyWithImpl<$Res>;
   $Res call({KtList<Weather> weatherList});
 }
 
 /// @nodoc
-class _$LoadedCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
-    implements $LoadedCopyWith<$Res> {
-  _$LoadedCopyWithImpl(Loaded _value, $Res Function(Loaded) _then)
-      : super(_value, (v) => _then(v as Loaded));
+class __$LoadedCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
+    implements _$LoadedCopyWith<$Res> {
+  __$LoadedCopyWithImpl(_Loaded _value, $Res Function(_Loaded) _then)
+      : super(_value, (v) => _then(v as _Loaded));
 
   @override
-  Loaded get _value => super._value as Loaded;
+  _Loaded get _value => super._value as _Loaded;
 
   @override
   $Res call({
     Object weatherList = freezed,
   }) {
-    return _then(Loaded(
+    return _then(_Loaded(
       weatherList == freezed
           ? _value.weatherList
           : weatherList as KtList<Weather>,
@@ -606,8 +606,8 @@ class _$LoadedCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$Loaded implements Loaded {
-  const _$Loaded(this.weatherList) : assert(weatherList != null);
+class _$_Loaded implements _Loaded {
+  const _$_Loaded(this.weatherList) : assert(weatherList != null);
 
   @override
   final KtList<Weather> weatherList;
@@ -620,7 +620,7 @@ class _$Loaded implements Loaded {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Loaded &&
+        (other is _Loaded &&
             (identical(other.weatherList, weatherList) ||
                 const DeepCollectionEquality()
                     .equals(other.weatherList, weatherList)));
@@ -631,8 +631,8 @@ class _$Loaded implements Loaded {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(weatherList);
 
   @override
-  $LoadedCopyWith<Loaded> get copyWith =>
-      _$LoadedCopyWithImpl<Loaded>(this, _$identity);
+  _$LoadedCopyWith<_Loaded> get copyWith =>
+      __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -668,10 +668,10 @@ class _$Loaded implements Loaded {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
-    @required Result loading(Loading value),
-    @required Result loaded(Loaded value),
-    @required Result failure(Failure value),
+    @required Result inital(_Initial value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
+    @required Result failure(_Failure value),
   }) {
     assert(inital != null);
     assert(loading != null);
@@ -683,10 +683,10 @@ class _$Loaded implements Loaded {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
-    Result loading(Loading value),
-    Result loaded(Loaded value),
-    Result failure(Failure value),
+    Result inital(_Initial value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
+    Result failure(_Failure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -697,36 +697,36 @@ class _$Loaded implements Loaded {
   }
 }
 
-abstract class Loaded implements WeatherState {
-  const factory Loaded(KtList<Weather> weatherList) = _$Loaded;
+abstract class _Loaded implements WeatherState {
+  const factory _Loaded(KtList<Weather> weatherList) = _$_Loaded;
 
   KtList<Weather> get weatherList;
-  $LoadedCopyWith<Loaded> get copyWith;
+  _$LoadedCopyWith<_Loaded> get copyWith;
 }
 
 /// @nodoc
-abstract class $FailureCopyWith<$Res> {
-  factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
-      _$FailureCopyWithImpl<$Res>;
+abstract class _$FailureCopyWith<$Res> {
+  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) then) =
+      __$FailureCopyWithImpl<$Res>;
   $Res call({WeatherFailure failure});
 
   $WeatherFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
-class _$FailureCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
-    implements $FailureCopyWith<$Res> {
-  _$FailureCopyWithImpl(Failure _value, $Res Function(Failure) _then)
-      : super(_value, (v) => _then(v as Failure));
+class __$FailureCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
+    implements _$FailureCopyWith<$Res> {
+  __$FailureCopyWithImpl(_Failure _value, $Res Function(_Failure) _then)
+      : super(_value, (v) => _then(v as _Failure));
 
   @override
-  Failure get _value => super._value as Failure;
+  _Failure get _value => super._value as _Failure;
 
   @override
   $Res call({
     Object failure = freezed,
   }) {
-    return _then(Failure(
+    return _then(_Failure(
       failure == freezed ? _value.failure : failure as WeatherFailure,
     ));
   }
@@ -743,8 +743,8 @@ class _$FailureCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$Failure implements Failure {
-  const _$Failure(this.failure) : assert(failure != null);
+class _$_Failure implements _Failure {
+  const _$_Failure(this.failure) : assert(failure != null);
 
   @override
   final WeatherFailure failure;
@@ -757,7 +757,7 @@ class _$Failure implements Failure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Failure &&
+        (other is _Failure &&
             (identical(other.failure, failure) ||
                 const DeepCollectionEquality().equals(other.failure, failure)));
   }
@@ -767,8 +767,8 @@ class _$Failure implements Failure {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
   @override
-  $FailureCopyWith<Failure> get copyWith =>
-      _$FailureCopyWithImpl<Failure>(this, _$identity);
+  _$FailureCopyWith<_Failure> get copyWith =>
+      __$FailureCopyWithImpl<_Failure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -804,10 +804,10 @@ class _$Failure implements Failure {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result inital(Initial value),
-    @required Result loading(Loading value),
-    @required Result loaded(Loaded value),
-    @required Result failure(Failure value),
+    @required Result inital(_Initial value),
+    @required Result loading(_Loading value),
+    @required Result loaded(_Loaded value),
+    @required Result failure(_Failure value),
   }) {
     assert(inital != null);
     assert(loading != null);
@@ -819,10 +819,10 @@ class _$Failure implements Failure {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result inital(Initial value),
-    Result loading(Loading value),
-    Result loaded(Loaded value),
-    Result failure(Failure value),
+    Result inital(_Initial value),
+    Result loading(_Loading value),
+    Result loaded(_Loaded value),
+    Result failure(_Failure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -833,9 +833,9 @@ class _$Failure implements Failure {
   }
 }
 
-abstract class Failure implements WeatherState {
-  const factory Failure(WeatherFailure failure) = _$Failure;
+abstract class _Failure implements WeatherState {
+  const factory _Failure(WeatherFailure failure) = _$_Failure;
 
   WeatherFailure get failure;
-  $FailureCopyWith<Failure> get copyWith;
+  _$FailureCopyWith<_Failure> get copyWith;
 }

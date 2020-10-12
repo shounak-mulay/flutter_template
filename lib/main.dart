@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/di/service_locator.dart';
-import 'package:flutter_template/routes/route_generator.dart';
-import 'package:flutter_template/routes/routes.dart';
+import 'package:flutter_template/presentation/routes/route_generator.dart';
+import 'package:flutter_template/presentation/routes/routes.dart';
+import 'package:injectable/injectable.dart';
 
 void main() {
-  setup();
+  configureInjection(Environment.dev);
   runApp(MyApp());
 }
 

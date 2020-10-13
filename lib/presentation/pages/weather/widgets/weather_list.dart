@@ -3,17 +3,17 @@ import 'package:flutter_template/data/model/weather.dart';
 import 'package:kt_dart/collection.dart';
 
 class WeatherList extends StatelessWidget {
-  final KtList<Weather> weatherData;
+  final KtList<Weather> weatherList;
 
-  const WeatherList(this.weatherData);
+  const WeatherList({@required this.weatherList});
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       addAutomaticKeepAlives: false,
-      itemCount: weatherData.size,
+      itemCount: weatherList.size,
       itemBuilder: (BuildContext context, int index) {
-        final weather = weatherData[index];
+        final weather = weatherList[index];
         return ListTile(
           title: Text(weather.title),
           subtitle: Text(

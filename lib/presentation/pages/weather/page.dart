@@ -11,17 +11,13 @@ class WeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: const Text(
-            'Weather',
-          ),
-          actions: [
-            IconButton(
-                icon: const Icon(Icons.add),
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.cities);
-                })
-          ]),
+      appBar: AppBar(title: const Text('Weather'), actions: [
+        IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.cities);
+            })
+      ]),
       body: BlocProvider(
         create: (context) =>
             getIt<WeatherBloc>()..add(WeatherEvent.watchWeatherForAllCities()),

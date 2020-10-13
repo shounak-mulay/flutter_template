@@ -8,7 +8,6 @@ part 'consolidated_weather.freezed.dart';
 
 @freezed
 abstract class ConsolidatedWeather implements _$ConsolidatedWeather {
-  const ConsolidatedWeather._();
   const factory ConsolidatedWeather(
     int id,
     @JsonKey(name: 'weather_state_name') String weatherStateName,
@@ -25,6 +24,8 @@ abstract class ConsolidatedWeather implements _$ConsolidatedWeather {
     num predictability,
   ) = _ConsolidatedWeather;
 
+  const ConsolidatedWeather._();
+  
   factory ConsolidatedWeather.fromJson(Map<String, dynamic> json) =>
       _$ConsolidatedWeatherFromJson(json);
 

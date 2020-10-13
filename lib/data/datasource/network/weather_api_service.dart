@@ -1,7 +1,7 @@
 import 'package:flutter_template/data/datasource/network/weather_api_service_interface.dart';
 import 'package:flutter_template/data/model/city.dart';
 import 'package:flutter_template/data/model/weather.dart';
-import 'package:injectable/injectable.dart';
+import 'package:kt_dart/collection.dart';
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
 
@@ -11,9 +11,11 @@ part 'weather_api_service.g.dart';
 abstract class WeatherAPIService implements IWeatherApiService{
   factory WeatherAPIService(Dio dio, {String baseUrl}) = _WeatherAPIService;
 
+  @override
   @GET('/search')
   Future<List<City>> searchCities(@Query('query') String city);
 
+  @override
   @GET('/{id}')
   Future<Weather> weatherForCity(@Path('id') int id);
 }

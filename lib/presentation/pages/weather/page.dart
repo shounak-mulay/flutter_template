@@ -21,7 +21,7 @@ class WeatherPage extends StatelessWidget {
       body: BlocProvider(
         create: (context) =>
             getIt<WeatherBloc>()..add(WeatherEvent.watchWeatherForAllCities()),
-        child: const WeatherData(),
+        child: WeatherData(),
       ),
     );
   }

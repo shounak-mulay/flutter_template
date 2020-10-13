@@ -9,18 +9,17 @@ class WidgetError extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
           child: Icon(
             Icons.error_outline,
             color: Colors.red,
             size: 35,
           ),
         ),
-        Text(this.errorMessage ?? "Something went wrong!"),
+        Text(errorMessage ?? "Something went wrong!"),
       ],
     ));
   }

@@ -14,23 +14,23 @@ class _$WeatherFailureTearOff {
   const _$WeatherFailureTearOff();
 
 // ignore: unused_element
-  Unknown unknown(String message) {
-    return Unknown(
-      message,
+  _Unknown unknown({String message}) {
+    return _Unknown(
+      message: message,
     );
   }
 
 // ignore: unused_element
-  UnableToFetch unableToFetch(String message) {
-    return UnableToFetch(
-      message,
+  _UnableToFetch unableToFetch({String message}) {
+    return _UnableToFetch(
+      message: message,
     );
   }
 
 // ignore: unused_element
-  RequestTimeOut requestTimeOut(String message) {
-    return RequestTimeOut(
-      message,
+  _RequestTimeOut requestTimeOut({String message}) {
+    return _RequestTimeOut(
+      message: message,
     );
   }
 }
@@ -58,15 +58,15 @@ mixin _$WeatherFailure {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result unknown(Unknown value),
-    @required Result unableToFetch(UnableToFetch value),
-    @required Result requestTimeOut(RequestTimeOut value),
+    @required Result unknown(_Unknown value),
+    @required Result unableToFetch(_UnableToFetch value),
+    @required Result requestTimeOut(_RequestTimeOut value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result unknown(Unknown value),
-    Result unableToFetch(UnableToFetch value),
-    Result requestTimeOut(RequestTimeOut value),
+    Result unknown(_Unknown value),
+    Result unableToFetch(_UnableToFetch value),
+    Result requestTimeOut(_RequestTimeOut value),
     @required Result orElse(),
   });
 
@@ -101,35 +101,36 @@ class _$WeatherFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $UnknownCopyWith<$Res> implements $WeatherFailureCopyWith<$Res> {
-  factory $UnknownCopyWith(Unknown value, $Res Function(Unknown) then) =
-      _$UnknownCopyWithImpl<$Res>;
+abstract class _$UnknownCopyWith<$Res>
+    implements $WeatherFailureCopyWith<$Res> {
+  factory _$UnknownCopyWith(_Unknown value, $Res Function(_Unknown) then) =
+      __$UnknownCopyWithImpl<$Res>;
   @override
   $Res call({String message});
 }
 
 /// @nodoc
-class _$UnknownCopyWithImpl<$Res> extends _$WeatherFailureCopyWithImpl<$Res>
-    implements $UnknownCopyWith<$Res> {
-  _$UnknownCopyWithImpl(Unknown _value, $Res Function(Unknown) _then)
-      : super(_value, (v) => _then(v as Unknown));
+class __$UnknownCopyWithImpl<$Res> extends _$WeatherFailureCopyWithImpl<$Res>
+    implements _$UnknownCopyWith<$Res> {
+  __$UnknownCopyWithImpl(_Unknown _value, $Res Function(_Unknown) _then)
+      : super(_value, (v) => _then(v as _Unknown));
 
   @override
-  Unknown get _value => super._value as Unknown;
+  _Unknown get _value => super._value as _Unknown;
 
   @override
   $Res call({
     Object message = freezed,
   }) {
-    return _then(Unknown(
-      message == freezed ? _value.message : message as String,
+    return _then(_Unknown(
+      message: message == freezed ? _value.message : message as String,
     ));
   }
 }
 
 /// @nodoc
-class _$Unknown implements Unknown {
-  const _$Unknown(this.message) : assert(message != null);
+class _$_Unknown implements _Unknown {
+  const _$_Unknown({this.message});
 
   @override
   final String message;
@@ -142,7 +143,7 @@ class _$Unknown implements Unknown {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Unknown &&
+        (other is _Unknown &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality().equals(other.message, message)));
   }
@@ -152,8 +153,8 @@ class _$Unknown implements Unknown {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
 
   @override
-  $UnknownCopyWith<Unknown> get copyWith =>
-      _$UnknownCopyWithImpl<Unknown>(this, _$identity);
+  _$UnknownCopyWith<_Unknown> get copyWith =>
+      __$UnknownCopyWithImpl<_Unknown>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -186,9 +187,9 @@ class _$Unknown implements Unknown {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result unknown(Unknown value),
-    @required Result unableToFetch(UnableToFetch value),
-    @required Result requestTimeOut(RequestTimeOut value),
+    @required Result unknown(_Unknown value),
+    @required Result unableToFetch(_UnableToFetch value),
+    @required Result requestTimeOut(_RequestTimeOut value),
   }) {
     assert(unknown != null);
     assert(unableToFetch != null);
@@ -199,9 +200,9 @@ class _$Unknown implements Unknown {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result unknown(Unknown value),
-    Result unableToFetch(UnableToFetch value),
-    Result requestTimeOut(RequestTimeOut value),
+    Result unknown(_Unknown value),
+    Result unableToFetch(_UnableToFetch value),
+    Result requestTimeOut(_RequestTimeOut value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -212,49 +213,49 @@ class _$Unknown implements Unknown {
   }
 }
 
-abstract class Unknown implements WeatherFailure {
-  const factory Unknown(String message) = _$Unknown;
+abstract class _Unknown implements WeatherFailure {
+  const factory _Unknown({String message}) = _$_Unknown;
 
   @override
   String get message;
   @override
-  $UnknownCopyWith<Unknown> get copyWith;
+  _$UnknownCopyWith<_Unknown> get copyWith;
 }
 
 /// @nodoc
-abstract class $UnableToFetchCopyWith<$Res>
+abstract class _$UnableToFetchCopyWith<$Res>
     implements $WeatherFailureCopyWith<$Res> {
-  factory $UnableToFetchCopyWith(
-          UnableToFetch value, $Res Function(UnableToFetch) then) =
-      _$UnableToFetchCopyWithImpl<$Res>;
+  factory _$UnableToFetchCopyWith(
+          _UnableToFetch value, $Res Function(_UnableToFetch) then) =
+      __$UnableToFetchCopyWithImpl<$Res>;
   @override
   $Res call({String message});
 }
 
 /// @nodoc
-class _$UnableToFetchCopyWithImpl<$Res>
+class __$UnableToFetchCopyWithImpl<$Res>
     extends _$WeatherFailureCopyWithImpl<$Res>
-    implements $UnableToFetchCopyWith<$Res> {
-  _$UnableToFetchCopyWithImpl(
-      UnableToFetch _value, $Res Function(UnableToFetch) _then)
-      : super(_value, (v) => _then(v as UnableToFetch));
+    implements _$UnableToFetchCopyWith<$Res> {
+  __$UnableToFetchCopyWithImpl(
+      _UnableToFetch _value, $Res Function(_UnableToFetch) _then)
+      : super(_value, (v) => _then(v as _UnableToFetch));
 
   @override
-  UnableToFetch get _value => super._value as UnableToFetch;
+  _UnableToFetch get _value => super._value as _UnableToFetch;
 
   @override
   $Res call({
     Object message = freezed,
   }) {
-    return _then(UnableToFetch(
-      message == freezed ? _value.message : message as String,
+    return _then(_UnableToFetch(
+      message: message == freezed ? _value.message : message as String,
     ));
   }
 }
 
 /// @nodoc
-class _$UnableToFetch implements UnableToFetch {
-  const _$UnableToFetch(this.message) : assert(message != null);
+class _$_UnableToFetch implements _UnableToFetch {
+  const _$_UnableToFetch({this.message});
 
   @override
   final String message;
@@ -267,7 +268,7 @@ class _$UnableToFetch implements UnableToFetch {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UnableToFetch &&
+        (other is _UnableToFetch &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality().equals(other.message, message)));
   }
@@ -277,8 +278,8 @@ class _$UnableToFetch implements UnableToFetch {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
 
   @override
-  $UnableToFetchCopyWith<UnableToFetch> get copyWith =>
-      _$UnableToFetchCopyWithImpl<UnableToFetch>(this, _$identity);
+  _$UnableToFetchCopyWith<_UnableToFetch> get copyWith =>
+      __$UnableToFetchCopyWithImpl<_UnableToFetch>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -311,9 +312,9 @@ class _$UnableToFetch implements UnableToFetch {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result unknown(Unknown value),
-    @required Result unableToFetch(UnableToFetch value),
-    @required Result requestTimeOut(RequestTimeOut value),
+    @required Result unknown(_Unknown value),
+    @required Result unableToFetch(_UnableToFetch value),
+    @required Result requestTimeOut(_RequestTimeOut value),
   }) {
     assert(unknown != null);
     assert(unableToFetch != null);
@@ -324,9 +325,9 @@ class _$UnableToFetch implements UnableToFetch {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result unknown(Unknown value),
-    Result unableToFetch(UnableToFetch value),
-    Result requestTimeOut(RequestTimeOut value),
+    Result unknown(_Unknown value),
+    Result unableToFetch(_UnableToFetch value),
+    Result requestTimeOut(_RequestTimeOut value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -337,49 +338,49 @@ class _$UnableToFetch implements UnableToFetch {
   }
 }
 
-abstract class UnableToFetch implements WeatherFailure {
-  const factory UnableToFetch(String message) = _$UnableToFetch;
+abstract class _UnableToFetch implements WeatherFailure {
+  const factory _UnableToFetch({String message}) = _$_UnableToFetch;
 
   @override
   String get message;
   @override
-  $UnableToFetchCopyWith<UnableToFetch> get copyWith;
+  _$UnableToFetchCopyWith<_UnableToFetch> get copyWith;
 }
 
 /// @nodoc
-abstract class $RequestTimeOutCopyWith<$Res>
+abstract class _$RequestTimeOutCopyWith<$Res>
     implements $WeatherFailureCopyWith<$Res> {
-  factory $RequestTimeOutCopyWith(
-          RequestTimeOut value, $Res Function(RequestTimeOut) then) =
-      _$RequestTimeOutCopyWithImpl<$Res>;
+  factory _$RequestTimeOutCopyWith(
+          _RequestTimeOut value, $Res Function(_RequestTimeOut) then) =
+      __$RequestTimeOutCopyWithImpl<$Res>;
   @override
   $Res call({String message});
 }
 
 /// @nodoc
-class _$RequestTimeOutCopyWithImpl<$Res>
+class __$RequestTimeOutCopyWithImpl<$Res>
     extends _$WeatherFailureCopyWithImpl<$Res>
-    implements $RequestTimeOutCopyWith<$Res> {
-  _$RequestTimeOutCopyWithImpl(
-      RequestTimeOut _value, $Res Function(RequestTimeOut) _then)
-      : super(_value, (v) => _then(v as RequestTimeOut));
+    implements _$RequestTimeOutCopyWith<$Res> {
+  __$RequestTimeOutCopyWithImpl(
+      _RequestTimeOut _value, $Res Function(_RequestTimeOut) _then)
+      : super(_value, (v) => _then(v as _RequestTimeOut));
 
   @override
-  RequestTimeOut get _value => super._value as RequestTimeOut;
+  _RequestTimeOut get _value => super._value as _RequestTimeOut;
 
   @override
   $Res call({
     Object message = freezed,
   }) {
-    return _then(RequestTimeOut(
-      message == freezed ? _value.message : message as String,
+    return _then(_RequestTimeOut(
+      message: message == freezed ? _value.message : message as String,
     ));
   }
 }
 
 /// @nodoc
-class _$RequestTimeOut implements RequestTimeOut {
-  const _$RequestTimeOut(this.message) : assert(message != null);
+class _$_RequestTimeOut implements _RequestTimeOut {
+  const _$_RequestTimeOut({this.message});
 
   @override
   final String message;
@@ -392,7 +393,7 @@ class _$RequestTimeOut implements RequestTimeOut {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is RequestTimeOut &&
+        (other is _RequestTimeOut &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality().equals(other.message, message)));
   }
@@ -402,8 +403,8 @@ class _$RequestTimeOut implements RequestTimeOut {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
 
   @override
-  $RequestTimeOutCopyWith<RequestTimeOut> get copyWith =>
-      _$RequestTimeOutCopyWithImpl<RequestTimeOut>(this, _$identity);
+  _$RequestTimeOutCopyWith<_RequestTimeOut> get copyWith =>
+      __$RequestTimeOutCopyWithImpl<_RequestTimeOut>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -436,9 +437,9 @@ class _$RequestTimeOut implements RequestTimeOut {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result unknown(Unknown value),
-    @required Result unableToFetch(UnableToFetch value),
-    @required Result requestTimeOut(RequestTimeOut value),
+    @required Result unknown(_Unknown value),
+    @required Result unableToFetch(_UnableToFetch value),
+    @required Result requestTimeOut(_RequestTimeOut value),
   }) {
     assert(unknown != null);
     assert(unableToFetch != null);
@@ -449,9 +450,9 @@ class _$RequestTimeOut implements RequestTimeOut {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result unknown(Unknown value),
-    Result unableToFetch(UnableToFetch value),
-    Result requestTimeOut(RequestTimeOut value),
+    Result unknown(_Unknown value),
+    Result unableToFetch(_UnableToFetch value),
+    Result requestTimeOut(_RequestTimeOut value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -462,11 +463,11 @@ class _$RequestTimeOut implements RequestTimeOut {
   }
 }
 
-abstract class RequestTimeOut implements WeatherFailure {
-  const factory RequestTimeOut(String message) = _$RequestTimeOut;
+abstract class _RequestTimeOut implements WeatherFailure {
+  const factory _RequestTimeOut({String message}) = _$_RequestTimeOut;
 
   @override
   String get message;
   @override
-  $RequestTimeOutCopyWith<RequestTimeOut> get copyWith;
+  _$RequestTimeOutCopyWith<_RequestTimeOut> get copyWith;
 }

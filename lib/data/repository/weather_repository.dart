@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_template/core/failures/city_failure.dart';
 import 'package:flutter_template/data/datasource/local/dao/city_dao_interface.dart';
 import 'package:flutter_template/data/datasource/network/weather_api_service_interface.dart';
 import 'package:flutter_template/data/model/city.dart';
@@ -11,7 +12,6 @@ import 'package:rxdart/rxdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:flutter_template/data/repository/weather_repository_interface.dart';
-import 'package:kt_dart/src/collection/kt_list.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 
 @LazySingleton(as: IWeatherRepository)
@@ -35,17 +35,17 @@ class WeatherRepository implements IWeatherRepository {
         case DioErrorType.CONNECT_TIMEOUT:
         case DioErrorType.SEND_TIMEOUT:
         case DioErrorType.RECEIVE_TIMEOUT:
-          return left(WeatherFailure.requestTimeOut(e.message));
+          return left(WeatherFailure.requestTimeOut(message: e.message));
           break;
         case DioErrorType.RESPONSE:
-          return left(WeatherFailure.unableToFetch(e.message));
+          return left(WeatherFailure.unableToFetch(message: e.message));
         case DioErrorType.CANCEL:
         case DioErrorType.DEFAULT:
         default:
-          return left(WeatherFailure.unknown(e.message));
+          return left(WeatherFailure.unknown(message: e.message));
       }
     } on MoorWrappedException catch (e) {
-      return left(WeatherFailure.unableToFetch(e.message));
+      return left(WeatherFailure.unableToFetch(message: e.message));
     }
   }
 
@@ -63,18 +63,63 @@ class WeatherRepository implements IWeatherRepository {
           case DioErrorType.CONNECT_TIMEOUT:
           case DioErrorType.SEND_TIMEOUT:
           case DioErrorType.RECEIVE_TIMEOUT:
-            return left(WeatherFailure.requestTimeOut(e.message));
+            return left(WeatherFailure.requestTimeOut(message: e.message));
             break;
           case DioErrorType.RESPONSE:
-            return left(WeatherFailure.unableToFetch(e.message));
+            return left(WeatherFailure.unableToFetch(message: e.message));
           case DioErrorType.CANCEL:
           case DioErrorType.DEFAULT:
           default:
-            return left(WeatherFailure.unknown(e.message));
+            return left(WeatherFailure.unknown(message: e.message));
         }
       } else {
-        return left(WeatherFailure.unknown(e.message));
+        return left(WeatherFailure.unknown(message: e.message.toString()));
       }
+    });
+  }
+
+  @override
+  Future<Either<CityFailure, KtList<City>>> searchCities(
+      {String searchTerm}) async {
+    try {
+      final List<City> citiesList =
+          await weatherApiService.searchCities(searchTerm);
+      
+      if (citiesList.isNotEmpty) {
+        return right(citiesList.toImmutableList());
+      } else {
+        return left(const CityFailure.noMatchingResults());
+      }
+    } on DioError catch (e) {
+      switch (e.type) {
+        case DioErrorType.CONNECT_TIMEOUT:
+        case DioErrorType.SEND_TIMEOUT:
+        case DioErrorType.RECEIVE_TIMEOUT:
+          return left(CityFailure.requestTimeOut(message: e.message));
+          break;
+        case DioErrorType.RESPONSE:
+          return left(CityFailure.unableToFetch(message: e.message));
+        case DioErrorType.CANCEL:
+        case DioErrorType.DEFAULT:
+        default:
+          return left(CityFailure.unknown(message: e.message));
+      }
+    } on MoorWrappedException catch (e) {
+      return left(CityFailure.unknown(message: e.message));
+    } on InvalidDataException catch (e) {
+      return left(CityFailure.invalidData(message: e.message));
+    }
+  }
+
+  @override
+  Stream<Either<CityFailure, KtList<City>>> watchSelectedCities() {
+    return cityDao.watchAllCities().map((citiesList) {
+      return right<CityFailure, KtList<City>>(citiesList.toImmutableList());
+    }).onErrorReturnWith((e) {
+      if (e is MoorWrappedException) {
+        return left(const CityFailure.unableToFetch());
+      }
+      return left(CityFailure.unknown(message: e.toString()));
     });
   }
 }

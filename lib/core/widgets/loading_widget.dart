@@ -9,14 +9,13 @@ class WidgetLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: CircularProgressIndicator(),
           ),
-          if (this.loadingMessage != null) Text(this.loadingMessage)
+          if (loadingMessage != null) Text(loadingMessage)
         ],
       ),
     );

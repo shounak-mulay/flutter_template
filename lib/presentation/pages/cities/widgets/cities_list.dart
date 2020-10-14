@@ -13,23 +13,27 @@ class CitiesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CitiesBloc, CitiesState>(
-      buildWhen: (previous, current) => current.maybeMap(
+    return Expanded(
+      child: BlocBuilder<CitiesBloc, CitiesState>(
+        buildWhen: (previous, current) => current.maybeMap(
           selectedLoaded: (_) => false,
           selectingCity: (_) => false,
-          orElse: () => true),
-      builder: (context, state) {
-        return state.maybeMap(
+          orElse: () => true,
+        ),
+        builder: (context, state) {
+          return state.maybeMap(
             initial: (_) => const SimpleInfoMessage(
-                  infoMessage: "Start typing to search...",
-                ),
+              infoMessage: "Start typing to search...",
+            ),
             loading: (_) => const WidgetLoading(),
             loaded: (data) => _CitiesListData(data.cityList),
             failure: (e) => WidgetError(
-                  errorMessage: e.failure.message,
-                ),
-            orElse: () => const WidgetLoading());
-      },
+              errorMessage: e.failure.message,
+            ),
+            orElse: () => const WidgetLoading(),
+          );
+        },
+      ),
     );
   }
 }
@@ -42,6 +46,7 @@ class _CitiesListData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CitiesBloc citiesBloc = Provider.of<CitiesBloc>(context);
+    citiesBloc.add(const CitiesEvent.watchSelectedCities());
     return Expanded(
       child: ListView.separated(
         addAutomaticKeepAlives: false,

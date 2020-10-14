@@ -316,6 +316,11 @@ class _$WeatherStateTearOff {
   }
 
 // ignore: unused_element
+  NoCitiesSelected noCitiesSelected() {
+    return const NoCitiesSelected();
+  }
+
+// ignore: unused_element
   Failure failure(WeatherFailure failure) {
     return Failure(
       failure,
@@ -334,6 +339,7 @@ mixin _$WeatherState {
     @required Result inital(),
     @required Result loading(),
     @required Result loaded(KtList<Weather> weatherList),
+    @required Result noCitiesSelected(),
     @required Result failure(WeatherFailure failure),
   });
   @optionalTypeArgs
@@ -341,6 +347,7 @@ mixin _$WeatherState {
     Result inital(),
     Result loading(),
     Result loaded(KtList<Weather> weatherList),
+    Result noCitiesSelected(),
     Result failure(WeatherFailure failure),
     @required Result orElse(),
   });
@@ -349,6 +356,7 @@ mixin _$WeatherState {
     @required Result inital(Initial value),
     @required Result loading(Loading value),
     @required Result loaded(Loaded value),
+    @required Result noCitiesSelected(NoCitiesSelected value),
     @required Result failure(Failure value),
   });
   @optionalTypeArgs
@@ -356,6 +364,7 @@ mixin _$WeatherState {
     Result inital(Initial value),
     Result loading(Loading value),
     Result loaded(Loaded value),
+    Result noCitiesSelected(NoCitiesSelected value),
     Result failure(Failure value),
     @required Result orElse(),
   });
@@ -416,11 +425,13 @@ class _$Initial implements Initial {
     @required Result inital(),
     @required Result loading(),
     @required Result loaded(KtList<Weather> weatherList),
+    @required Result noCitiesSelected(),
     @required Result failure(WeatherFailure failure),
   }) {
     assert(inital != null);
     assert(loading != null);
     assert(loaded != null);
+    assert(noCitiesSelected != null);
     assert(failure != null);
     return inital();
   }
@@ -431,6 +442,7 @@ class _$Initial implements Initial {
     Result inital(),
     Result loading(),
     Result loaded(KtList<Weather> weatherList),
+    Result noCitiesSelected(),
     Result failure(WeatherFailure failure),
     @required Result orElse(),
   }) {
@@ -447,11 +459,13 @@ class _$Initial implements Initial {
     @required Result inital(Initial value),
     @required Result loading(Loading value),
     @required Result loaded(Loaded value),
+    @required Result noCitiesSelected(NoCitiesSelected value),
     @required Result failure(Failure value),
   }) {
     assert(inital != null);
     assert(loading != null);
     assert(loaded != null);
+    assert(noCitiesSelected != null);
     assert(failure != null);
     return inital(this);
   }
@@ -462,6 +476,7 @@ class _$Initial implements Initial {
     Result inital(Initial value),
     Result loading(Loading value),
     Result loaded(Loaded value),
+    Result noCitiesSelected(NoCitiesSelected value),
     Result failure(Failure value),
     @required Result orElse(),
   }) {
@@ -516,11 +531,13 @@ class _$Loading implements Loading {
     @required Result inital(),
     @required Result loading(),
     @required Result loaded(KtList<Weather> weatherList),
+    @required Result noCitiesSelected(),
     @required Result failure(WeatherFailure failure),
   }) {
     assert(inital != null);
     assert(loading != null);
     assert(loaded != null);
+    assert(noCitiesSelected != null);
     assert(failure != null);
     return loading();
   }
@@ -531,6 +548,7 @@ class _$Loading implements Loading {
     Result inital(),
     Result loading(),
     Result loaded(KtList<Weather> weatherList),
+    Result noCitiesSelected(),
     Result failure(WeatherFailure failure),
     @required Result orElse(),
   }) {
@@ -547,11 +565,13 @@ class _$Loading implements Loading {
     @required Result inital(Initial value),
     @required Result loading(Loading value),
     @required Result loaded(Loaded value),
+    @required Result noCitiesSelected(NoCitiesSelected value),
     @required Result failure(Failure value),
   }) {
     assert(inital != null);
     assert(loading != null);
     assert(loaded != null);
+    assert(noCitiesSelected != null);
     assert(failure != null);
     return loading(this);
   }
@@ -562,6 +582,7 @@ class _$Loading implements Loading {
     Result inital(Initial value),
     Result loading(Loading value),
     Result loaded(Loaded value),
+    Result noCitiesSelected(NoCitiesSelected value),
     Result failure(Failure value),
     @required Result orElse(),
   }) {
@@ -640,11 +661,13 @@ class _$Loaded implements Loaded {
     @required Result inital(),
     @required Result loading(),
     @required Result loaded(KtList<Weather> weatherList),
+    @required Result noCitiesSelected(),
     @required Result failure(WeatherFailure failure),
   }) {
     assert(inital != null);
     assert(loading != null);
     assert(loaded != null);
+    assert(noCitiesSelected != null);
     assert(failure != null);
     return loaded(weatherList);
   }
@@ -655,6 +678,7 @@ class _$Loaded implements Loaded {
     Result inital(),
     Result loading(),
     Result loaded(KtList<Weather> weatherList),
+    Result noCitiesSelected(),
     Result failure(WeatherFailure failure),
     @required Result orElse(),
   }) {
@@ -671,11 +695,13 @@ class _$Loaded implements Loaded {
     @required Result inital(Initial value),
     @required Result loading(Loading value),
     @required Result loaded(Loaded value),
+    @required Result noCitiesSelected(NoCitiesSelected value),
     @required Result failure(Failure value),
   }) {
     assert(inital != null);
     assert(loading != null);
     assert(loaded != null);
+    assert(noCitiesSelected != null);
     assert(failure != null);
     return loaded(this);
   }
@@ -686,6 +712,7 @@ class _$Loaded implements Loaded {
     Result inital(Initial value),
     Result loading(Loading value),
     Result loaded(Loaded value),
+    Result noCitiesSelected(NoCitiesSelected value),
     Result failure(Failure value),
     @required Result orElse(),
   }) {
@@ -702,6 +729,115 @@ abstract class Loaded implements WeatherState {
 
   KtList<Weather> get weatherList;
   $LoadedCopyWith<Loaded> get copyWith;
+}
+
+/// @nodoc
+abstract class $NoCitiesSelectedCopyWith<$Res> {
+  factory $NoCitiesSelectedCopyWith(
+          NoCitiesSelected value, $Res Function(NoCitiesSelected) then) =
+      _$NoCitiesSelectedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoCitiesSelectedCopyWithImpl<$Res>
+    extends _$WeatherStateCopyWithImpl<$Res>
+    implements $NoCitiesSelectedCopyWith<$Res> {
+  _$NoCitiesSelectedCopyWithImpl(
+      NoCitiesSelected _value, $Res Function(NoCitiesSelected) _then)
+      : super(_value, (v) => _then(v as NoCitiesSelected));
+
+  @override
+  NoCitiesSelected get _value => super._value as NoCitiesSelected;
+}
+
+/// @nodoc
+class _$NoCitiesSelected implements NoCitiesSelected {
+  const _$NoCitiesSelected();
+
+  @override
+  String toString() {
+    return 'WeatherState.noCitiesSelected()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoCitiesSelected);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result inital(),
+    @required Result loading(),
+    @required Result loaded(KtList<Weather> weatherList),
+    @required Result noCitiesSelected(),
+    @required Result failure(WeatherFailure failure),
+  }) {
+    assert(inital != null);
+    assert(loading != null);
+    assert(loaded != null);
+    assert(noCitiesSelected != null);
+    assert(failure != null);
+    return noCitiesSelected();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result inital(),
+    Result loading(),
+    Result loaded(KtList<Weather> weatherList),
+    Result noCitiesSelected(),
+    Result failure(WeatherFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noCitiesSelected != null) {
+      return noCitiesSelected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result inital(Initial value),
+    @required Result loading(Loading value),
+    @required Result loaded(Loaded value),
+    @required Result noCitiesSelected(NoCitiesSelected value),
+    @required Result failure(Failure value),
+  }) {
+    assert(inital != null);
+    assert(loading != null);
+    assert(loaded != null);
+    assert(noCitiesSelected != null);
+    assert(failure != null);
+    return noCitiesSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result inital(Initial value),
+    Result loading(Loading value),
+    Result loaded(Loaded value),
+    Result noCitiesSelected(NoCitiesSelected value),
+    Result failure(Failure value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noCitiesSelected != null) {
+      return noCitiesSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoCitiesSelected implements WeatherState {
+  const factory NoCitiesSelected() = _$NoCitiesSelected;
 }
 
 /// @nodoc
@@ -776,11 +912,13 @@ class _$Failure implements Failure {
     @required Result inital(),
     @required Result loading(),
     @required Result loaded(KtList<Weather> weatherList),
+    @required Result noCitiesSelected(),
     @required Result failure(WeatherFailure failure),
   }) {
     assert(inital != null);
     assert(loading != null);
     assert(loaded != null);
+    assert(noCitiesSelected != null);
     assert(failure != null);
     return failure(this.failure);
   }
@@ -791,6 +929,7 @@ class _$Failure implements Failure {
     Result inital(),
     Result loading(),
     Result loaded(KtList<Weather> weatherList),
+    Result noCitiesSelected(),
     Result failure(WeatherFailure failure),
     @required Result orElse(),
   }) {
@@ -807,11 +946,13 @@ class _$Failure implements Failure {
     @required Result inital(Initial value),
     @required Result loading(Loading value),
     @required Result loaded(Loaded value),
+    @required Result noCitiesSelected(NoCitiesSelected value),
     @required Result failure(Failure value),
   }) {
     assert(inital != null);
     assert(loading != null);
     assert(loaded != null);
+    assert(noCitiesSelected != null);
     assert(failure != null);
     return failure(this);
   }
@@ -822,6 +963,7 @@ class _$Failure implements Failure {
     Result inital(Initial value),
     Result loading(Loading value),
     Result loaded(Loaded value),
+    Result noCitiesSelected(NoCitiesSelected value),
     Result failure(Failure value),
     @required Result orElse(),
   }) {

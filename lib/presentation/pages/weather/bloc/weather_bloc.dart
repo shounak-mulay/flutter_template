@@ -46,12 +46,17 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   Stream<WeatherState> _handleWeatherLoaded(_WeatherListLoaded event) async* {
     yield event.weatherList.fold(
       (weatherFailure) => WeatherState.failure(weatherFailure),
-      (weatherList) => WeatherState.loaded(weatherList),
+      (weatherList) {
+        if (weatherList.isEmpty()) {
+          return const WeatherState.noCitiesSelected();
+        }
+        return WeatherState.loaded(weatherList);
+      },
     );
   }
 
   @override
-  Future<void> close() async{
+  Future<void> close() async {
     await _weatherStreamSubscription?.cancel();
     return super.close();
   }

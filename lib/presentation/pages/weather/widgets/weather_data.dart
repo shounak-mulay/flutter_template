@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/core/widgets/loading_widget.dart';
+import 'package:flutter_template/core/widgets/simple_info_message.dart';
 import 'package:flutter_template/presentation/pages/weather/bloc/weather_bloc.dart';
 import 'package:flutter_template/presentation/pages/weather/widgets/weather_error.dart';
 import 'package:flutter_template/presentation/pages/weather/widgets/weather_list.dart';
@@ -15,6 +16,9 @@ class WeatherData extends StatelessWidget {
         inital: (_) => const Text('Initial'),
         loading: (_) => const WidgetLoading(loadingMessage: 'Loading Weather'),
         loaded: (state) => WeatherList(weatherList: state.weatherList),
+        noCitiesSelected: (_) => const SimpleInfoMessage(
+          infoMessage: 'Selected Cities will appear here.',
+        ),
         failure: (state) => WeatherError(failure: state.failure),
       );
     });

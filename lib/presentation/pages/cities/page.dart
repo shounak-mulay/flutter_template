@@ -13,7 +13,10 @@ class CitiesPage extends StatelessWidget {
       body: BlocProvider(
         create: (_) => getIt<CitiesBloc>(),
         child: Column(
-          children: const [CitiesSearchBar(), CitiesList()],
+          children: const [
+            CitiesSearchBar(),
+            CitiesList(),
+          ],
         ),
       ),
     );

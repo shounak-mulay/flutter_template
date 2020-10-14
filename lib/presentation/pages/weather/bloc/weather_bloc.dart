@@ -13,11 +13,11 @@ part 'weather_event.dart';
 part 'weather_state.dart';
 part 'weather_bloc.freezed.dart';
 
-@Injectable()
+@LazySingleton()
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final IWeatherRepository weatherRepository;
 
-  WeatherBloc(this.weatherRepository) : super(WeatherState.inital());
+  WeatherBloc(this.weatherRepository) : super(const Initial());
 
   StreamSubscription<Either<WeatherFailure, KtList<Weather>>>
       _weatherStreamSubscription;
@@ -35,7 +35,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   Stream<WeatherState> _handleWatchWeather(
     _WatchWeatherForAllCities event,
   ) async* {
-    yield WeatherState.loading();
+    yield const WeatherState.loading();
     await _weatherStreamSubscription?.cancel();
     _weatherStreamSubscription =
         weatherRepository.watchWeatherForAllCities().listen((weatherList) {

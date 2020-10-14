@@ -11,9 +11,10 @@ class CitiesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Add a City')),
       body: BlocProvider(
-        create: (_) => getIt<CitiesBloc>(),
+        create: (_) =>
+            getIt<CitiesBloc>()..add(const CitiesEvent.watchSelectedCities()),
         child: Column(
-          children: [CitiesSearchBar(), CitiesList()],
+          children: const [CitiesSearchBar(), CitiesList()],
         ),
       ),
     );

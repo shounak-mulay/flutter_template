@@ -22,7 +22,6 @@ class CitiesBloc extends Bloc<CitiesEvent, CitiesState> {
 
   StreamSubscription<Either<CityFailure, KtList<City>>>
       _selectedCitiesStreamSubscription;
-  KtList<City> _latestLoadedCities = const KtList.empty();
 
   @override
   Stream<Transition<CitiesEvent, CitiesState>> transformEvents(
@@ -40,6 +39,7 @@ class CitiesBloc extends Bloc<CitiesEvent, CitiesState> {
       searchCities: _handleSearchCities,
       watchSelectedCities: _handleWatchSelectedCities,
       selectedCitiesLoaded: _handleSelectedCitiesLoaded,
+      selectCity: _handleSelectCity,
     );
   }
 
@@ -59,7 +59,6 @@ class CitiesBloc extends Bloc<CitiesEvent, CitiesState> {
 
   Stream<CitiesState> _handleWatchSelectedCities(
       _WatchSelectedCities event) async* {
-    yield const CitiesState.loading();
     _selectedCitiesStreamSubscription?.cancel();
     _selectedCitiesStreamSubscription =
         weatherRepository.watchSelectedCities().listen((event) {
@@ -69,14 +68,15 @@ class CitiesBloc extends Bloc<CitiesEvent, CitiesState> {
 
   Stream<CitiesState> _handleSelectedCitiesLoaded(
       _SelectedCitiesLoaded event) async* {
-    yield event.selectedCities.fold((failure) => CitiesState.failure(failure),
-        (selectedCities) {
-      if (selectedCities.isEmpty()) {
-        return const CitiesState.initial();
-      }
-      return CitiesState.loaded(_latestLoadedCities,
-          selectedCities: selectedCities);
-    });
+    yield event.selectedCities.fold(
+      (failure) => CitiesState.failure(failure),
+      (selectedCities) => CitiesState.selectedLoaded(selectedCities),
+    );
+  }
+
+  Stream<CitiesState>  _handleSelectCity(_SelectCity event) async* {
+    yield CitiesState.selectingCity(event.city);
+    await weatherRepository.selectCity(event.city);
   }
 
   @override

@@ -10,7 +10,9 @@ abstract class ApiInjectionModule {
   @LazySingleton()
   Dio dioClient() {
     final dioClient = Dio();
-    dioClient.interceptors.add(PrettyDioLogger());
+    dioClient.interceptors.add(PrettyDioLogger(
+      responseBody: false
+    ));
     return dioClient;
   }
 

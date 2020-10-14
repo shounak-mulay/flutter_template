@@ -25,8 +25,8 @@ class WeatherRepository implements IWeatherRepository {
   Future<Either<WeatherFailure, KtList<Weather>>>
       getWeatherForAllCities() async {
     try {
-      List<City> cities = await cityDao.getAllCities();
-      List<Weather> weatherForCities = await Stream.fromIterable(cities)
+      final List<City> cities = await cityDao.getAllCities();
+      final List<Weather> weatherForCities = await Stream.fromIterable(cities)
           .asyncMap((city) => weatherApiService.weatherForCity(city.woeid))
           .toList();
       return right(weatherForCities.toImmutableList());
@@ -52,9 +52,13 @@ class WeatherRepository implements IWeatherRepository {
   @override
   Stream<Either<WeatherFailure, KtList<Weather>>> watchWeatherForAllCities() {
     return cityDao.watchAllCities().asyncMap((citiesList) async {
-      List<Weather> weatherList = await Future.wait(citiesList.map(
-        (city) async => await weatherApiService.weatherForCity(city.woeid),
+      final List<Weather> weatherList = await Future.wait(citiesList.map(
+        (city) async => weatherApiService.weatherForCity(city.woeid),
       ));
+      if (weatherList.isEmpty) {
+        return left<WeatherFailure, KtList<Weather>>(
+            const WeatherFailure.unknown(message: "Nothing added to weather list."));
+      }
       return right<WeatherFailure, KtList<Weather>>(
           weatherList.toImmutableList());
     }).onErrorReturnWith((e) {
@@ -84,7 +88,7 @@ class WeatherRepository implements IWeatherRepository {
     try {
       final List<City> citiesList =
           await weatherApiService.searchCities(searchTerm);
-      
+
       if (citiesList.isNotEmpty) {
         return right(citiesList.toImmutableList());
       } else {
@@ -121,5 +125,10 @@ class WeatherRepository implements IWeatherRepository {
       }
       return left(CityFailure.unknown(message: e.toString()));
     });
+  }
+
+  @override
+  Future<void> selectCity(City city) async {
+    await cityDao.insertCity(city);
   }
 }

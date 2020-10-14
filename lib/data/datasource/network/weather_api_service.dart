@@ -1,7 +1,6 @@
 import 'package:flutter_template/data/datasource/network/weather_api_service_interface.dart';
 import 'package:flutter_template/data/model/city.dart';
 import 'package:flutter_template/data/model/weather.dart';
-import 'package:kt_dart/collection.dart';
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
 

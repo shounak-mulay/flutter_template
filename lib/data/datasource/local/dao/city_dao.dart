@@ -29,7 +29,7 @@ class CityDao extends DatabaseAccessor<WeatherDatabase>
   }
 
   @override
-  void insertCity(City city) {
-    into(cities).insert(city.convertToDataModel());
+  Future<void> insertCity(City city) async{
+    await into(cities).insert(city.convertToDataModel());
   }
 }

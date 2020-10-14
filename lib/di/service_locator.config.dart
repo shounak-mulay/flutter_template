@@ -36,7 +36,7 @@ GetIt $initGetIt(
   gh.lazySingleton<ICityDao>(() => CityDao(get<WeatherDatabase>()));
   gh.lazySingleton<IWeatherRepository>(
       () => WeatherRepository(get<ICityDao>(), get<IWeatherApiService>()));
-  gh.factory<WeatherBloc>(() => WeatherBloc(get<IWeatherRepository>()));
+  gh.lazySingleton<WeatherBloc>(() => WeatherBloc(get<IWeatherRepository>()));
   gh.factory<CitiesBloc>(() => CitiesBloc(get<IWeatherRepository>()));
   return get;
 }

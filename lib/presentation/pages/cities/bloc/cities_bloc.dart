@@ -37,8 +37,6 @@ class CitiesBloc extends Bloc<CitiesEvent, CitiesState> {
   ) async* {
     yield* event.map(
       searchCities: _handleSearchCities,
-      watchSelectedCities: _handleWatchSelectedCities,
-      selectedCitiesLoaded: _handleSelectedCitiesLoaded,
       selectCity: _handleSelectCity,
     );
   }
@@ -50,33 +48,29 @@ class CitiesBloc extends Bloc<CitiesEvent, CitiesState> {
     } else {
       final Either<CityFailure, KtList<City>> citiesResult =
           await weatherRepository.searchCities(searchTerm: event.searchTerm);
+      final KtList<int> selectedIds = await weatherRepository.getSelectedCityIds();
       yield citiesResult.fold(
         (failure) => CitiesState.failure(failure),
-        (citiesList) => CitiesState.loaded(citiesList),
+        (citiesList) {
+          return CitiesState.loaded(citiesList.mapIndexed((index, city) {
+            if (selectedIds.contains(city.woeid)) {
+              return city.copyWith(isSelected: true);
+            }
+            return city;
+          }));
+        },
       );
     }
   }
 
-  Stream<CitiesState> _handleWatchSelectedCities(
-      _WatchSelectedCities event) async* {
-    _selectedCitiesStreamSubscription?.cancel();
-    _selectedCitiesStreamSubscription =
-        weatherRepository.watchSelectedCities().listen((event) {
-      add(CitiesEvent.selectedCitiesLoaded(event));
-    });
-  }
-
-  Stream<CitiesState> _handleSelectedCitiesLoaded(
-      _SelectedCitiesLoaded event) async* {
-    yield event.selectedCities.fold(
-      (failure) => CitiesState.failure(failure),
-      (selectedCities) => CitiesState.selectedLoaded(selectedCities),
-    );
-  }
-
   Stream<CitiesState>  _handleSelectCity(_SelectCity event) async* {
-    yield CitiesState.selectingCity(event.city);
-    await weatherRepository.selectCity(event.city);
+    yield CitiesState.loaded(event.loadedList.mapIndexed((index, city) {
+      if (index == event.selectedIndex && !city.isSelected) {
+        weatherRepository.selectCity(city);
+        return city.copyWith(isSelected: true);
+      }
+      return city;
+    }));
   }
 
   @override

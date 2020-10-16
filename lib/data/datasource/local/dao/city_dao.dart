@@ -32,4 +32,9 @@ class CityDao extends DatabaseAccessor<WeatherDatabase>
   Future<void> insertCity(City city) async{
     await into(cities).insert(city.convertToDataModel());
   }
+
+  @override
+  Future<List<int>> getAllIds() async {
+     return select(cities).map((cityDataModel) => cityDataModel.woeid).get();
+  }
 }

@@ -18,11 +18,13 @@ class _$CityTearOff {
 
 // ignore: unused_element
   _City call(int woeid, String title,
-      @JsonKey(name: 'location_type') String locationType) {
+      @JsonKey(name: 'location_type') String locationType,
+      {bool isSelected = false}) {
     return _City(
       woeid,
       title,
       locationType,
+      isSelected: isSelected,
     );
   }
 
@@ -42,6 +44,7 @@ mixin _$City {
   String get title;
   @JsonKey(name: 'location_type')
   String get locationType;
+  bool get isSelected;
 
   Map<String, dynamic> toJson();
   $CityCopyWith<City> get copyWith;
@@ -54,7 +57,8 @@ abstract class $CityCopyWith<$Res> {
   $Res call(
       {int woeid,
       String title,
-      @JsonKey(name: 'location_type') String locationType});
+      @JsonKey(name: 'location_type') String locationType,
+      bool isSelected});
 }
 
 /// @nodoc
@@ -70,6 +74,7 @@ class _$CityCopyWithImpl<$Res> implements $CityCopyWith<$Res> {
     Object woeid = freezed,
     Object title = freezed,
     Object locationType = freezed,
+    Object isSelected = freezed,
   }) {
     return _then(_value.copyWith(
       woeid: woeid == freezed ? _value.woeid : woeid as int,
@@ -77,6 +82,8 @@ class _$CityCopyWithImpl<$Res> implements $CityCopyWith<$Res> {
       locationType: locationType == freezed
           ? _value.locationType
           : locationType as String,
+      isSelected:
+          isSelected == freezed ? _value.isSelected : isSelected as bool,
     ));
   }
 }
@@ -89,7 +96,8 @@ abstract class _$CityCopyWith<$Res> implements $CityCopyWith<$Res> {
   $Res call(
       {int woeid,
       String title,
-      @JsonKey(name: 'location_type') String locationType});
+      @JsonKey(name: 'location_type') String locationType,
+      bool isSelected});
 }
 
 /// @nodoc
@@ -106,11 +114,14 @@ class __$CityCopyWithImpl<$Res> extends _$CityCopyWithImpl<$Res>
     Object woeid = freezed,
     Object title = freezed,
     Object locationType = freezed,
+    Object isSelected = freezed,
   }) {
     return _then(_City(
       woeid == freezed ? _value.woeid : woeid as int,
       title == freezed ? _value.title : title as String,
       locationType == freezed ? _value.locationType : locationType as String,
+      isSelected:
+          isSelected == freezed ? _value.isSelected : isSelected as bool,
     ));
   }
 }
@@ -120,10 +131,12 @@ class __$CityCopyWithImpl<$Res> extends _$CityCopyWithImpl<$Res>
 /// @nodoc
 class _$_City implements _City {
   const _$_City(
-      this.woeid, this.title, @JsonKey(name: 'location_type') this.locationType)
+      this.woeid, this.title, @JsonKey(name: 'location_type') this.locationType,
+      {this.isSelected = false})
       : assert(woeid != null),
         assert(title != null),
-        assert(locationType != null);
+        assert(locationType != null),
+        assert(isSelected != null);
 
   factory _$_City.fromJson(Map<String, dynamic> json) =>
       _$_$_CityFromJson(json);
@@ -135,10 +148,13 @@ class _$_City implements _City {
   @override
   @JsonKey(name: 'location_type')
   final String locationType;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isSelected;
 
   @override
   String toString() {
-    return 'City(woeid: $woeid, title: $title, locationType: $locationType)';
+    return 'City(woeid: $woeid, title: $title, locationType: $locationType, isSelected: $isSelected)';
   }
 
   @override
@@ -151,7 +167,10 @@ class _$_City implements _City {
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.locationType, locationType) ||
                 const DeepCollectionEquality()
-                    .equals(other.locationType, locationType)));
+                    .equals(other.locationType, locationType)) &&
+            (identical(other.isSelected, isSelected) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSelected, isSelected)));
   }
 
   @override
@@ -159,7 +178,8 @@ class _$_City implements _City {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(woeid) ^
       const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(locationType);
+      const DeepCollectionEquality().hash(locationType) ^
+      const DeepCollectionEquality().hash(isSelected);
 
   @override
   _$CityCopyWith<_City> get copyWith =>
@@ -173,7 +193,8 @@ class _$_City implements _City {
 
 abstract class _City implements City {
   const factory _City(int woeid, String title,
-      @JsonKey(name: 'location_type') String locationType) = _$_City;
+      @JsonKey(name: 'location_type') String locationType,
+      {bool isSelected}) = _$_City;
 
   factory _City.fromJson(Map<String, dynamic> json) = _$_City.fromJson;
 
@@ -184,6 +205,8 @@ abstract class _City implements City {
   @override
   @JsonKey(name: 'location_type')
   String get locationType;
+  @override
+  bool get isSelected;
   @override
   _$CityCopyWith<_City> get copyWith;
 }

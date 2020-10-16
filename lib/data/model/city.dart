@@ -6,11 +6,9 @@ part 'city.g.dart';
 
 @freezed
 abstract class City with _$City {
-  const factory City(
-    int woeid,
-    String title,
-    @JsonKey(name: 'location_type')
-    String locationType) = _City;
+  const factory City(int woeid, String title,
+      @JsonKey(name: 'location_type') String locationType,
+      {@Default(false) bool isSelected}) = _City;
 
   factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
 }

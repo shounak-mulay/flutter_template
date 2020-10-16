@@ -131,4 +131,10 @@ class WeatherRepository implements IWeatherRepository {
   Future<void> selectCity(City city) async {
     await cityDao.insertCity(city);
   }
+
+  @override
+  Future<KtList<int>> getSelectedCityIds() async {
+    final ids = await cityDao.getAllIds();
+    return ids.toImmutableList();
+  }
 }

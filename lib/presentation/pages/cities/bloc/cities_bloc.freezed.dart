@@ -21,22 +21,10 @@ class _$CitiesEventTearOff {
   }
 
 // ignore: unused_element
-  _SelectCity selectCity(City city) {
+  _SelectCity selectCity(KtList<City> loadedList, int selectedIndex) {
     return _SelectCity(
-      city,
-    );
-  }
-
-// ignore: unused_element
-  _WatchSelectedCities watchSelectedCities() {
-    return const _WatchSelectedCities();
-  }
-
-// ignore: unused_element
-  _SelectedCitiesLoaded selectedCitiesLoaded(
-      Either<CityFailure, KtList<City>> selectedCities) {
-    return _SelectedCitiesLoaded(
-      selectedCities,
+      loadedList,
+      selectedIndex,
     );
   }
 }
@@ -50,34 +38,23 @@ mixin _$CitiesEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result searchCities(String searchTerm),
-    @required Result selectCity(City city),
-    @required Result watchSelectedCities(),
-    @required
-        Result selectedCitiesLoaded(
-            Either<CityFailure, KtList<City>> selectedCities),
+    @required Result selectCity(KtList<City> loadedList, int selectedIndex),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result searchCities(String searchTerm),
-    Result selectCity(City city),
-    Result watchSelectedCities(),
-    Result selectedCitiesLoaded(
-        Either<CityFailure, KtList<City>> selectedCities),
+    Result selectCity(KtList<City> loadedList, int selectedIndex),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result searchCities(_SearchCities value),
     @required Result selectCity(_SelectCity value),
-    @required Result watchSelectedCities(_WatchSelectedCities value),
-    @required Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result searchCities(_SearchCities value),
     Result selectCity(_SelectCity value),
-    Result watchSelectedCities(_WatchSelectedCities value),
-    Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
     @required Result orElse(),
   });
 }
@@ -159,16 +136,10 @@ class _$_SearchCities implements _SearchCities {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result searchCities(String searchTerm),
-    @required Result selectCity(City city),
-    @required Result watchSelectedCities(),
-    @required
-        Result selectedCitiesLoaded(
-            Either<CityFailure, KtList<City>> selectedCities),
+    @required Result selectCity(KtList<City> loadedList, int selectedIndex),
   }) {
     assert(searchCities != null);
     assert(selectCity != null);
-    assert(watchSelectedCities != null);
-    assert(selectedCitiesLoaded != null);
     return searchCities(searchTerm);
   }
 
@@ -176,10 +147,7 @@ class _$_SearchCities implements _SearchCities {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result searchCities(String searchTerm),
-    Result selectCity(City city),
-    Result watchSelectedCities(),
-    Result selectedCitiesLoaded(
-        Either<CityFailure, KtList<City>> selectedCities),
+    Result selectCity(KtList<City> loadedList, int selectedIndex),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -194,13 +162,9 @@ class _$_SearchCities implements _SearchCities {
   Result map<Result extends Object>({
     @required Result searchCities(_SearchCities value),
     @required Result selectCity(_SelectCity value),
-    @required Result watchSelectedCities(_WatchSelectedCities value),
-    @required Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
   }) {
     assert(searchCities != null);
     assert(selectCity != null);
-    assert(watchSelectedCities != null);
-    assert(selectedCitiesLoaded != null);
     return searchCities(this);
   }
 
@@ -209,8 +173,6 @@ class _$_SearchCities implements _SearchCities {
   Result maybeMap<Result extends Object>({
     Result searchCities(_SearchCities value),
     Result selectCity(_SelectCity value),
-    Result watchSelectedCities(_WatchSelectedCities value),
-    Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -233,9 +195,7 @@ abstract class _$SelectCityCopyWith<$Res> {
   factory _$SelectCityCopyWith(
           _SelectCity value, $Res Function(_SelectCity) then) =
       __$SelectCityCopyWithImpl<$Res>;
-  $Res call({City city});
-
-  $CityCopyWith<$Res> get city;
+  $Res call({KtList<City> loadedList, int selectedIndex});
 }
 
 /// @nodoc
@@ -250,47 +210,49 @@ class __$SelectCityCopyWithImpl<$Res> extends _$CitiesEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object city = freezed,
+    Object loadedList = freezed,
+    Object selectedIndex = freezed,
   }) {
     return _then(_SelectCity(
-      city == freezed ? _value.city : city as City,
+      loadedList == freezed ? _value.loadedList : loadedList as KtList<City>,
+      selectedIndex == freezed ? _value.selectedIndex : selectedIndex as int,
     ));
-  }
-
-  @override
-  $CityCopyWith<$Res> get city {
-    if (_value.city == null) {
-      return null;
-    }
-    return $CityCopyWith<$Res>(_value.city, (value) {
-      return _then(_value.copyWith(city: value));
-    });
   }
 }
 
 /// @nodoc
 class _$_SelectCity implements _SelectCity {
-  const _$_SelectCity(this.city) : assert(city != null);
+  const _$_SelectCity(this.loadedList, this.selectedIndex)
+      : assert(loadedList != null),
+        assert(selectedIndex != null);
 
   @override
-  final City city;
+  final KtList<City> loadedList;
+  @override
+  final int selectedIndex;
 
   @override
   String toString() {
-    return 'CitiesEvent.selectCity(city: $city)';
+    return 'CitiesEvent.selectCity(loadedList: $loadedList, selectedIndex: $selectedIndex)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SelectCity &&
-            (identical(other.city, city) ||
-                const DeepCollectionEquality().equals(other.city, city)));
+            (identical(other.loadedList, loadedList) ||
+                const DeepCollectionEquality()
+                    .equals(other.loadedList, loadedList)) &&
+            (identical(other.selectedIndex, selectedIndex) ||
+                const DeepCollectionEquality()
+                    .equals(other.selectedIndex, selectedIndex)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(city);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(loadedList) ^
+      const DeepCollectionEquality().hash(selectedIndex);
 
   @override
   _$SelectCityCopyWith<_SelectCity> get copyWith =>
@@ -300,32 +262,23 @@ class _$_SelectCity implements _SelectCity {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result searchCities(String searchTerm),
-    @required Result selectCity(City city),
-    @required Result watchSelectedCities(),
-    @required
-        Result selectedCitiesLoaded(
-            Either<CityFailure, KtList<City>> selectedCities),
+    @required Result selectCity(KtList<City> loadedList, int selectedIndex),
   }) {
     assert(searchCities != null);
     assert(selectCity != null);
-    assert(watchSelectedCities != null);
-    assert(selectedCitiesLoaded != null);
-    return selectCity(city);
+    return selectCity(loadedList, selectedIndex);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result searchCities(String searchTerm),
-    Result selectCity(City city),
-    Result watchSelectedCities(),
-    Result selectedCitiesLoaded(
-        Either<CityFailure, KtList<City>> selectedCities),
+    Result selectCity(KtList<City> loadedList, int selectedIndex),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (selectCity != null) {
-      return selectCity(city);
+      return selectCity(loadedList, selectedIndex);
     }
     return orElse();
   }
@@ -335,13 +288,9 @@ class _$_SelectCity implements _SelectCity {
   Result map<Result extends Object>({
     @required Result searchCities(_SearchCities value),
     @required Result selectCity(_SelectCity value),
-    @required Result watchSelectedCities(_WatchSelectedCities value),
-    @required Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
   }) {
     assert(searchCities != null);
     assert(selectCity != null);
-    assert(watchSelectedCities != null);
-    assert(selectedCitiesLoaded != null);
     return selectCity(this);
   }
 
@@ -350,8 +299,6 @@ class _$_SelectCity implements _SelectCity {
   Result maybeMap<Result extends Object>({
     Result searchCities(_SearchCities value),
     Result selectCity(_SelectCity value),
-    Result watchSelectedCities(_WatchSelectedCities value),
-    Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -363,254 +310,12 @@ class _$_SelectCity implements _SelectCity {
 }
 
 abstract class _SelectCity implements CitiesEvent {
-  const factory _SelectCity(City city) = _$_SelectCity;
+  const factory _SelectCity(KtList<City> loadedList, int selectedIndex) =
+      _$_SelectCity;
 
-  City get city;
+  KtList<City> get loadedList;
+  int get selectedIndex;
   _$SelectCityCopyWith<_SelectCity> get copyWith;
-}
-
-/// @nodoc
-abstract class _$WatchSelectedCitiesCopyWith<$Res> {
-  factory _$WatchSelectedCitiesCopyWith(_WatchSelectedCities value,
-          $Res Function(_WatchSelectedCities) then) =
-      __$WatchSelectedCitiesCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$WatchSelectedCitiesCopyWithImpl<$Res>
-    extends _$CitiesEventCopyWithImpl<$Res>
-    implements _$WatchSelectedCitiesCopyWith<$Res> {
-  __$WatchSelectedCitiesCopyWithImpl(
-      _WatchSelectedCities _value, $Res Function(_WatchSelectedCities) _then)
-      : super(_value, (v) => _then(v as _WatchSelectedCities));
-
-  @override
-  _WatchSelectedCities get _value => super._value as _WatchSelectedCities;
-}
-
-/// @nodoc
-class _$_WatchSelectedCities implements _WatchSelectedCities {
-  const _$_WatchSelectedCities();
-
-  @override
-  String toString() {
-    return 'CitiesEvent.watchSelectedCities()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _WatchSelectedCities);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result searchCities(String searchTerm),
-    @required Result selectCity(City city),
-    @required Result watchSelectedCities(),
-    @required
-        Result selectedCitiesLoaded(
-            Either<CityFailure, KtList<City>> selectedCities),
-  }) {
-    assert(searchCities != null);
-    assert(selectCity != null);
-    assert(watchSelectedCities != null);
-    assert(selectedCitiesLoaded != null);
-    return watchSelectedCities();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result searchCities(String searchTerm),
-    Result selectCity(City city),
-    Result watchSelectedCities(),
-    Result selectedCitiesLoaded(
-        Either<CityFailure, KtList<City>> selectedCities),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (watchSelectedCities != null) {
-      return watchSelectedCities();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result searchCities(_SearchCities value),
-    @required Result selectCity(_SelectCity value),
-    @required Result watchSelectedCities(_WatchSelectedCities value),
-    @required Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
-  }) {
-    assert(searchCities != null);
-    assert(selectCity != null);
-    assert(watchSelectedCities != null);
-    assert(selectedCitiesLoaded != null);
-    return watchSelectedCities(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result searchCities(_SearchCities value),
-    Result selectCity(_SelectCity value),
-    Result watchSelectedCities(_WatchSelectedCities value),
-    Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (watchSelectedCities != null) {
-      return watchSelectedCities(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WatchSelectedCities implements CitiesEvent {
-  const factory _WatchSelectedCities() = _$_WatchSelectedCities;
-}
-
-/// @nodoc
-abstract class _$SelectedCitiesLoadedCopyWith<$Res> {
-  factory _$SelectedCitiesLoadedCopyWith(_SelectedCitiesLoaded value,
-          $Res Function(_SelectedCitiesLoaded) then) =
-      __$SelectedCitiesLoadedCopyWithImpl<$Res>;
-  $Res call({Either<CityFailure, KtList<City>> selectedCities});
-}
-
-/// @nodoc
-class __$SelectedCitiesLoadedCopyWithImpl<$Res>
-    extends _$CitiesEventCopyWithImpl<$Res>
-    implements _$SelectedCitiesLoadedCopyWith<$Res> {
-  __$SelectedCitiesLoadedCopyWithImpl(
-      _SelectedCitiesLoaded _value, $Res Function(_SelectedCitiesLoaded) _then)
-      : super(_value, (v) => _then(v as _SelectedCitiesLoaded));
-
-  @override
-  _SelectedCitiesLoaded get _value => super._value as _SelectedCitiesLoaded;
-
-  @override
-  $Res call({
-    Object selectedCities = freezed,
-  }) {
-    return _then(_SelectedCitiesLoaded(
-      selectedCities == freezed
-          ? _value.selectedCities
-          : selectedCities as Either<CityFailure, KtList<City>>,
-    ));
-  }
-}
-
-/// @nodoc
-class _$_SelectedCitiesLoaded implements _SelectedCitiesLoaded {
-  const _$_SelectedCitiesLoaded(this.selectedCities)
-      : assert(selectedCities != null);
-
-  @override
-  final Either<CityFailure, KtList<City>> selectedCities;
-
-  @override
-  String toString() {
-    return 'CitiesEvent.selectedCitiesLoaded(selectedCities: $selectedCities)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _SelectedCitiesLoaded &&
-            (identical(other.selectedCities, selectedCities) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedCities, selectedCities)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(selectedCities);
-
-  @override
-  _$SelectedCitiesLoadedCopyWith<_SelectedCitiesLoaded> get copyWith =>
-      __$SelectedCitiesLoadedCopyWithImpl<_SelectedCitiesLoaded>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result searchCities(String searchTerm),
-    @required Result selectCity(City city),
-    @required Result watchSelectedCities(),
-    @required
-        Result selectedCitiesLoaded(
-            Either<CityFailure, KtList<City>> selectedCities),
-  }) {
-    assert(searchCities != null);
-    assert(selectCity != null);
-    assert(watchSelectedCities != null);
-    assert(selectedCitiesLoaded != null);
-    return selectedCitiesLoaded(selectedCities);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result searchCities(String searchTerm),
-    Result selectCity(City city),
-    Result watchSelectedCities(),
-    Result selectedCitiesLoaded(
-        Either<CityFailure, KtList<City>> selectedCities),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (selectedCitiesLoaded != null) {
-      return selectedCitiesLoaded(selectedCities);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result searchCities(_SearchCities value),
-    @required Result selectCity(_SelectCity value),
-    @required Result watchSelectedCities(_WatchSelectedCities value),
-    @required Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
-  }) {
-    assert(searchCities != null);
-    assert(selectCity != null);
-    assert(watchSelectedCities != null);
-    assert(selectedCitiesLoaded != null);
-    return selectedCitiesLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result searchCities(_SearchCities value),
-    Result selectCity(_SelectCity value),
-    Result watchSelectedCities(_WatchSelectedCities value),
-    Result selectedCitiesLoaded(_SelectedCitiesLoaded value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (selectedCitiesLoaded != null) {
-      return selectedCitiesLoaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SelectedCitiesLoaded implements CitiesEvent {
-  const factory _SelectedCitiesLoaded(
-          Either<CityFailure, KtList<City>> selectedCities) =
-      _$_SelectedCitiesLoaded;
-
-  Either<CityFailure, KtList<City>> get selectedCities;
-  _$SelectedCitiesLoadedCopyWith<_SelectedCitiesLoaded> get copyWith;
 }
 
 /// @nodoc

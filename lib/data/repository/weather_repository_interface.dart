@@ -11,5 +11,6 @@ abstract class IWeatherRepository {
   Stream<Either<WeatherFailure, KtList<Weather>>> watchWeatherForAllCities();
   Future<Either<CityFailure, KtList<City>>> searchCities({@required String searchTerm});
   Stream<Either<CityFailure, KtList<City>>> watchSelectedCities();
+  Future<KtList<int>> getSelectedCityIds();
   Future<void> selectCity(City city);
 }
